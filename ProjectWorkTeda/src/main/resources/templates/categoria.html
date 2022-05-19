@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Categorie</title>
+<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+
+<body>
+	<div id="global">
+        <h5>Categoria</h5>
+        Codice: <span th:text="${categoria.catCod}"></span><br/>
+        Descrizione: <span th:text="${categoria.catDescrizione}"></span><br/>
+	</div>
+	<div class="center"><a  th:href="@{/}">Menù</a><br> </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Categorie</title>
+<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+
+<body>
+	<h3>Lista categorie</h3>
+	<div th:if="${ not#lists.isEmpty(categorie)}">
+		<table>
+			<tr>
+				<th>Codice</th>
+				<th>Descrizione</th>
+			</tr>
+			<tr th:each="categoria : ${categorie}">
+				<td th:text="${categoria.catCod}"></td>
+				<td th:text="${categoria.catDescrizione}"></td>
+			</tr>
+			<br/>			
+		<table>
+		<div class="center"><a  th:href="@{/}">Menù</a><br> </div>
+	</div>
+
+</body>
+</html>

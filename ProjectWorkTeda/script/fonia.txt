@@ -1,0 +1,40 @@
+CREATE TABLE IF NOT EXISTS public.chiamata
+(
+    id_chiamata integer NOT NULL,
+    id_linea integer NOT NULL,
+    data_inizio timestamp without time zone NOT NULL,
+    data_fine timestamp without time zone NOT NULL,
+    CONSTRAINT chiamata_pkey PRIMARY KEY (id_chiamata),
+    CONSTRAINT id_linea FOREIGN KEY (id_linea)
+        REFERENCES public.linea (num_telefono) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+
+
+CREATE TABLE IF NOT EXISTS public.cliente
+(
+    id_cliente integer NOT NULL,
+    nome character(40) COLLATE pg_catalog."default",
+    cognome character(40) COLLATE pg_catalog."default",
+    email character varying(40) COLLATE pg_catalog."default",
+    cf character varying(40) COLLATE pg_catalog."default",
+    CONSTRAINT cliente_pkey PRIMARY KEY (id_cliente)
+);
+
+
+CREATE TABLE IF NOT EXISTS public.linea
+(
+    num_telefono numeric(10,0) NOT NULL,
+    tipo_linea character(40) COLLATE pg_catalog."default",
+    id_cliente integer NOT NULL,
+    stato_linea character(40) COLLATE pg_catalog."default",
+    CONSTRAINT linea_pkey PRIMARY KEY (num_telefono),
+    CONSTRAINT id_cliente FOREIGN KEY (id_cliente)
+        REFERENCES public.cliente (id_cliente) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+);
+
+
